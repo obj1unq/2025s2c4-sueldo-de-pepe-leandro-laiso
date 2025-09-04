@@ -186,3 +186,27 @@ describe "Roque" {
 		assert.equals(39800, roque.sueldo())
 	}
 }
+
+describe "Ernesto" {
+
+	test "Caso 1: Compañero de Pepe (Cadete), Presentismo nulo" {
+		ernesto.compañero(pepe)
+		pepe.categoria(cadete)
+		ernesto.tipoBonoPres(nulo)
+		assert.equals(20000, ernesto.sueldo())
+	}
+
+	test "Caso 2: Compañero de Pepe (Gerente), Presentismo demagogico" {
+		ernesto.compañero(pepe)
+		pepe.categoria(gerente)
+		ernesto.tipoBonoPres(demagogico)
+		assert.equals(15500, ernesto.sueldo())
+	}
+
+	test "Caso 3: Compañero de Pepe (Gerente), Presentismo normal" {
+		ernesto.compañero(pepe)
+		pepe.categoria(gerente)
+		ernesto.tipoBonoPres(normal)
+		assert.equals(17000, ernesto.sueldo())
+	}
+}

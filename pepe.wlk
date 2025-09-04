@@ -52,6 +52,26 @@ object roque {
     }
 }
 
+object ernesto {
+    var compañero = null
+    var tipoBonoPres = nulo
+    const property cantFaltas = 0
+
+    method sueldo() = self.neto() + tipoBonoPres.bonoPresentismo(self)
+
+    method neto() = compañero.neto()
+
+    method noFaltóNunca() = cantFaltas == 0
+
+    method compañero(_compañero) {
+        compañero = _compañero
+    }
+
+    method tipoBonoPres(_tipoBonoPres) {
+        tipoBonoPres = _tipoBonoPres
+    }
+}
+
 // CATEGORÍAS
 object cadete {
     method neto() = 20000
