@@ -49,6 +49,27 @@ object gerente {
     method neto() = 15000
 }
 
+object vendedor {
+    var hayAumentoPorMuchasVentas = false
+    const netoBase = 16000
+
+    method neto() {
+        if (hayAumentoPorMuchasVentas) {
+            return netoBase * 1.25
+        }
+        else {
+            return netoBase
+        }
+    }
+
+    method activarAumentoPorMuchasVentas() {
+        hayAumentoPorMuchasVentas = true
+    }
+
+    method desactivarAumentoPorMuchasVentas() {
+        hayAumentoPorMuchasVentas = false
+    }
+}
 
 
 // BONOS
