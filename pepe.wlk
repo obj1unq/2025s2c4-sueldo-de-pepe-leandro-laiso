@@ -71,6 +71,16 @@ object vendedor {
     }
 }
 
+object medioTiempo {
+    var categoriaBase = null
+    
+    method neto() = categoriaBase.neto() / 2
+
+    method categoriaBase(categoria) {
+        categoriaBase = categoria
+    }   
+}
+
 
 // BONOS
 object nulo {

@@ -146,3 +146,25 @@ describe "Categoria vendedor" {
 		assert.equals(20800, pepe.sueldo())
 	}
 }
+
+describe "Categoria Modificador medioTiempo" {
+
+	test "Caso 1: Gerente medio tiempo" {
+		medioTiempo.categoriaBase(gerente)
+		assert.equals(7500, medioTiempo.neto())
+	}
+
+	test "Caso 2: Cadete medio tiempo" {
+		medioTiempo.categoriaBase(cadete)
+		assert.equals(10000, medioTiempo.neto())
+	}
+
+	test "Caso 3: Pepe es Cadete, Resultado porcentaje, Presentismo normal, 0 faltas, medio tiempo" {
+		pepe.categoria(medioTiempo)
+		medioTiempo.categoriaBase(cadete)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(0)
+		assert.equals(13000, pepe.sueldo())
+	}
+}
