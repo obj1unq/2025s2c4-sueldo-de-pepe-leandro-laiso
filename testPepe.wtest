@@ -210,3 +210,29 @@ describe "Ernesto" {
 		assert.equals(17000, ernesto.sueldo())
 	}
 }
+
+describe "Bonus (Casos de prueba propuestos en la consigna)" {
+
+	method initialize() {
+	  	medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(demagogico)
+		pepe.cantFaltas(1)
+		roque.tipoBonoRes(montoFijo)
+		ernesto.compañero(pepe)
+		ernesto.tipoBonoPres(ajuste)
+	}
+
+	test "Bonus: Sueldo de pepe es 11500" {
+		assert.equals(11500, pepe.sueldo())
+	}
+
+	test "Bonus: Sueldo de Roque es 37800" {
+		assert.equals(37800, roque.sueldo())
+	}
+
+	test "Bonus: Sueldo de Ernesto es 10100" {
+		assert.equals(10100, ernesto.sueldo())
+	}
+}
