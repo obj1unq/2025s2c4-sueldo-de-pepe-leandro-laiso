@@ -168,3 +168,21 @@ describe "Categoria Modificador medioTiempo" {
 		assert.equals(13000, pepe.sueldo())
 	}
 }
+
+describe "Roque" {
+
+	test "Caso 1: Resultados nulo" {
+		roque.tipoBonoRes(nulo)
+		assert.equals(37000, roque.sueldo())
+	}
+
+	test "Caso 2: Resultados montoFijo" {
+		roque.tipoBonoRes(montoFijo)
+		assert.equals(37800, roque.sueldo())
+	}
+
+	test "Caso 3: Resultados porcentaje" {
+		roque.tipoBonoRes(porcentaje)
+		assert.equals(39800, roque.sueldo())
+	}
+}

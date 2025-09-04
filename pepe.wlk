@@ -40,6 +40,18 @@ object sofia {
     }
 }
 
+object roque {
+    var tipoBonoRes = nulo
+
+    method sueldo() = self.neto() + tipoBonoRes.bonoResultado(self) + 9000
+
+    method neto() = 28000
+
+    method tipoBonoRes(_tipoBonoRes) {
+        tipoBonoRes = _tipoBonoRes
+    }
+}
+
 // CATEGORÍAS
 object cadete {
     method neto() = 20000
