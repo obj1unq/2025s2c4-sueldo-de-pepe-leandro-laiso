@@ -23,6 +23,23 @@ object pepe {
     }
 }
 
+object sofia {
+    var categoria = cadete
+    var tipoBonoRes = nulo
+
+    method sueldo() = self.neto() + tipoBonoRes.bonoResultado(self)
+
+    method neto() = categoria.neto() * 1.3
+
+    method categoria(_categoria) {
+        categoria = _categoria
+    }
+
+    method tipoBonoRes(_tipoBonoRes) {
+        tipoBonoRes = _tipoBonoRes
+    }
+}
+
 // CATEGORÍAS
 object cadete {
     method neto() = 20000

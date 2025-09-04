@@ -112,3 +112,18 @@ describe "Sueldo Pepe (Casos de prueba personalizados)" {
 		assert.equals(15800, pepe.sueldo())
 	}
 }
+
+describe "Sofia" {
+
+	test "Caso 1: Cadete, Resultados nulo" {
+		sofia.categoria(cadete)
+		sofia.tipoBonoRes(nulo)
+		assert.equals(26000, sofia.sueldo())
+	}
+
+	test "Caso 2: Gerente, Resultados montoFijo" {
+		sofia.categoria(gerente)
+		sofia.tipoBonoRes(montoFijo)
+		assert.equals(20300, sofia.sueldo())
+	}
+}
