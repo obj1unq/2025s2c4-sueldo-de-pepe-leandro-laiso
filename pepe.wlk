@@ -108,8 +108,8 @@ object medioTiempo {
     
     method neto() = categoriaBase.neto() / 2
 
-    method categoriaBase(categoria) {
-        categoriaBase = categoria
+    method categoriaBase(_categoriaBase) {
+        categoriaBase = _categoriaBase
     }   
 }
 
