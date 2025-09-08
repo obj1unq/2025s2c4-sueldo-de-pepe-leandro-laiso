@@ -1,10 +1,238 @@
 import pepe.*
 
-describe "Sueldo Pepe" {
+describe "Sueldo Pepe (Casos de prueba del ejercicio)" {
 	
-	test "Test 1" {
-		//TODO: Implementame
+	test "Caso 1: Cadete, Resultado monto fijo, presentismo normal, 3 faltas" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(montoFijo)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(3)
+		assert.equals(20800, pepe.sueldo())
 	}
 
+	test "Caso 2: Gerente, Resultado porcentaje, presentismo nulo" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(nulo)
+		assert.equals(16500, pepe.sueldo())
+	}
+
+	test "Caso 3: Cadete, Resultado porcentaje, presentismo normal, 0 faltas" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(0)
+		assert.equals(24000, pepe.sueldo())
+	}
+
+	test "Caso 4: Cadete, Resultado porcentaje, presentismo normal, 1 falta" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(1)
+		assert.equals(23000, pepe.sueldo())
+	}
 	
+}
+
+describe "Sueldo Pepe (Casos de prueba personalizados)" {
+
+	test "Caso 1: Cadete, Resultados nulo, Presentismo nulo" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(nulo)
+		pepe.tipoBonoRes(nulo)
+		assert.equals(20000, pepe.sueldo())
+	}
+
+	test "Caso 2: Cadete, Resultados montoFijo, Presentismo nulo" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(montoFijo)
+		pepe.tipoBonoPres(nulo)
+		assert.equals(20800, pepe.sueldo())
+	}
+
+	test "Caso 3: Gerente, Resultados porcentaje, Presentismo nulo" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(nulo)
+		assert.equals(16500, pepe.sueldo())
+	}
+
+	test "Caso 4: Gerente, Resultados nulo, Presentismo demagogico" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(nulo)
+		pepe.tipoBonoPres(demagogico)
+		assert.equals(15500, pepe.sueldo())
+	}
+
+	test "Caso 5: Cadete, Resultados nulo, Presentismo demagogico" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(nulo)
+		pepe.tipoBonoPres(demagogico)
+		assert.equals(20300, pepe.sueldo())
+	}
+
+	test "Caso 6: Cadete, Resultados montoFijo, Presentismo ajuste, 0 faltas" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(montoFijo)
+		pepe.tipoBonoPres(ajuste)
+		pepe.cantFaltas(0)
+		assert.equals(20900, pepe.sueldo())
+	}
+
+	test "Caso 7: Gerente, Resultados porcentaje, Presentismo ajuste, 1 falta" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(ajuste)
+		pepe.cantFaltas(1)
+		assert.equals(16500, pepe.sueldo())
+	}
+
+	test "Caso 8: Gerente, Resultados porcentaje, Presentismo normal, 0 faltas" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(0)
+		assert.equals(18500, pepe.sueldo())
+	}
+
+	test "Caso 9: Cadete, Resultados nulo, Presentismo normal, 1 falta" {
+		pepe.categoria(cadete)
+		pepe.tipoBonoRes(nulo)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(1)
+		assert.equals(21000, pepe.sueldo())
+	}
+
+	test "Caso 10: Gerente, Resultados montoFijo, Presentismo normal, 2 faltas" {
+		pepe.categoria(gerente)
+		pepe.tipoBonoRes(montoFijo)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(2)
+		assert.equals(15800, pepe.sueldo())
+	}
+}
+
+describe "Sofia" {
+
+	test "Caso 1: Cadete, Resultados nulo" {
+		sofia.categoria(cadete)
+		sofia.tipoBonoRes(nulo)
+		assert.equals(26000, sofia.sueldo())
+	}
+
+	test "Caso 2: Gerente, Resultados montoFijo" {
+		sofia.categoria(gerente)
+		sofia.tipoBonoRes(montoFijo)
+		assert.equals(20300, sofia.sueldo())
+	}
+}
+
+describe "Categoria vendedor" {
+
+	test "Caso 1: Pepe es Vendedor, Resultados nulo, Presentismo nulo, sin aumento por muchas ventas" {
+		pepe.categoria(vendedor)
+		pepe.tipoBonoRes(nulo)
+		pepe.tipoBonoPres(nulo)
+		vendedor.desactivarAumentoPorMuchasVentas()
+		assert.equals(16000, pepe.sueldo())
+	}
+
+	test "Caso 2: Pepe es Vendedor, Resultados montoFijo, Presentismo nulo, con aumento por muchas ventas" {
+		pepe.categoria(vendedor)
+		pepe.tipoBonoRes(montoFijo)
+		pepe.tipoBonoPres(nulo)
+		vendedor.activarAumentoPorMuchasVentas()
+		assert.equals(20800, pepe.sueldo())
+	}
+}
+
+describe "Categoria Modificador medioTiempo" {
+
+	test "Caso 1: Gerente medio tiempo" {
+		medioTiempo.categoriaBase(gerente)
+		assert.equals(7500, medioTiempo.neto())
+	}
+
+	test "Caso 2: Cadete medio tiempo" {
+		medioTiempo.categoriaBase(cadete)
+		assert.equals(10000, medioTiempo.neto())
+	}
+
+	test "Caso 3: Pepe es Cadete, Resultado porcentaje, Presentismo normal, 0 faltas, medio tiempo" {
+		pepe.categoria(medioTiempo)
+		medioTiempo.categoriaBase(cadete)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(normal)
+		pepe.cantFaltas(0)
+		assert.equals(13000, pepe.sueldo())
+	}
+}
+
+describe "Roque" {
+
+	test "Caso 1: Resultados nulo" {
+		roque.tipoBonoRes(nulo)
+		assert.equals(37000, roque.sueldo())
+	}
+
+	test "Caso 2: Resultados montoFijo" {
+		roque.tipoBonoRes(montoFijo)
+		assert.equals(37800, roque.sueldo())
+	}
+
+	test "Caso 3: Resultados porcentaje" {
+		roque.tipoBonoRes(porcentaje)
+		assert.equals(39800, roque.sueldo())
+	}
+}
+
+describe "Ernesto" {
+
+	test "Caso 1: Compañero de Pepe (Cadete), Presentismo nulo" {
+		ernesto.compañero(pepe)
+		pepe.categoria(cadete)
+		ernesto.tipoBonoPres(nulo)
+		assert.equals(20000, ernesto.sueldo())
+	}
+
+	test "Caso 2: Compañero de Pepe (Gerente), Presentismo demagogico" {
+		ernesto.compañero(pepe)
+		pepe.categoria(gerente)
+		ernesto.tipoBonoPres(demagogico)
+		assert.equals(15500, ernesto.sueldo())
+	}
+
+	test "Caso 3: Compañero de Pepe (Gerente), Presentismo normal" {
+		ernesto.compañero(pepe)
+		pepe.categoria(gerente)
+		ernesto.tipoBonoPres(normal)
+		assert.equals(17000, ernesto.sueldo())
+	}
+}
+
+describe "Bonus (Casos de prueba propuestos en la consigna)" {
+
+	method initialize() {
+	  	medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.tipoBonoRes(porcentaje)
+		pepe.tipoBonoPres(demagogico)
+		pepe.cantFaltas(1)
+		roque.tipoBonoRes(montoFijo)
+		ernesto.compañero(pepe)
+		ernesto.tipoBonoPres(ajuste)
+	}
+
+	test "Bonus: Sueldo de pepe es 11500" {
+		assert.equals(11500, pepe.sueldo())
+	}
+
+	test "Bonus: Sueldo de Roque es 37800" {
+		assert.equals(37800, roque.sueldo())
+	}
+
+	test "Bonus: Sueldo de Ernesto es 10100" {
+		assert.equals(10100, ernesto.sueldo())
+	}
 }
